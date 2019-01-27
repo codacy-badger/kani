@@ -1,0 +1,9 @@
+theme: jekyll-theme-slate
+
+title: Kani
+lang: "en-US"
+
+repository: sanyarnd/kani
+
+github:
+repository_url: https://github.com/sanyarnd/kani
