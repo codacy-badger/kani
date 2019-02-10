@@ -1,6 +1,5 @@
-package io.kani.tests
+package io.kani
 
-import io.kani.TestClass
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 

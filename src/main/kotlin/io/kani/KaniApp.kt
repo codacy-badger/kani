@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory
 
 
 class KaniApp : Application() {
-    val logger = LoggerFactory.getLogger(KaniApp::class.java)
+    private val logger = LoggerFactory.getLogger(KaniApp::class.java)
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
