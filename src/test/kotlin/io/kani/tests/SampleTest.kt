@@ -1,18 +1,20 @@
 package io.kani.tests
 
 import io.kani.TestClass
-import org.junit.jupiter.api.Assertions
+import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 
 
 class SampleTest {
     @Test
     fun testEasy() {
-        Assertions.assertEquals(TestClass().foo(3, 4), 7)
+        val testClass = TestClass()
+        Assertions.assertThat(testClass.foo(3,4)).isEqualTo(7)
     }
 
     @Test
     fun testEasy2() {
-        Assertions.assertEquals(TestClass().foo(3, 4), 7)
+        val testClass = TestClass()
+        Assertions.assertThat(testClass.foo(3,5)).isEqualTo(8)
     }
 }

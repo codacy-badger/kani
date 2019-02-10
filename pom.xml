@@ -62,9 +62,10 @@
         <mockk.version>1.9</mockk.version>
         <junit-jupiter-api.version>5.4.0</junit-jupiter-api.version>
         <systemtray.version>3.17</systemtray.version>
+        <assertj.version>3.11.1</assertj.version>
 
         <!--Plugins-->
-        <maven-minimum-version>3.3.9</maven-minimum-version>
+        <maven-minimum.version>3.3.9</maven-minimum.version>
 
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
@@ -141,7 +142,7 @@
                                     <version>${java-version}</version>
                                 </requireJavaVersion>
                                 <requireMavenVersion>
-                                    <version>${maven-minimum-version}</version>
+                                    <version>[${maven-minimum.version},)</version>
                                 </requireMavenVersion>
                             </rules>
                         </configuration>
@@ -278,12 +279,17 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <!--<scope>test</scope>-->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.mockk</groupId>
             <artifactId>mockk</artifactId>
-            <!--<scope>test</scope>-->
+            <scope>test</scope>
         </dependency>
 
         <!--JavaFX-->
@@ -356,6 +362,12 @@
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
                 <version>${junit-jupiter-api.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
