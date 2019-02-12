@@ -2,7 +2,6 @@ module io.kani {
     requires kotlin.stdlib;
 
     requires javafx.graphics;
-    requires javafx.controls;
     requires javafx.fxml;
 
     requires org.slf4j;

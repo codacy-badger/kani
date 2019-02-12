@@ -56,6 +56,12 @@
         <javafx.version>11.0.2</javafx.version>
         <systemtray.version>3.17</systemtray.version>
 
+        <klaxon.version>5.0.5</klaxon.version>
+        <konfig.version>1.6.10.0</konfig.version>
+
+        <kotlin.coroutines.version>1.1.1</kotlin.coroutines.version>
+
+        <exposed.version>0.12.2</exposed.version>
         <h2.version>1.4.197</h2.version>
 
         <jna.version>5.2.0</jna.version>
@@ -285,10 +291,6 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-reflect</artifactId>
-        </dependency>
 
         <!--Dependency Injection-->
         <dependency>
@@ -299,19 +301,7 @@
         <!--JavaFX-->
         <dependency>
             <groupId>org.openjfx</groupId>
-            <artifactId>javafx-base</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-media</artifactId>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -326,6 +316,10 @@
 
         <!--H2 database-->
         <dependency>
+            <groupId>org.jetbrains.exposed</groupId>
+            <artifactId>exposed</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
@@ -338,6 +332,16 @@
         <dependency>
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna-platform</artifactId>
+        </dependency>
+
+        <!--Logging-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
         </dependency>
 
         <!--Testing-->
@@ -367,17 +371,6 @@
             <artifactId>testfx-junit</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!--Logging-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -407,6 +400,13 @@
                 <version>${arrow.version}</version>
             </dependency>
 
+            <!--Coroutines-->
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-core</artifactId>
+                <version>${kotlin.coroutines.version}</version>
+            </dependency>
+
             <!--JavaFX-->
             <dependency>
                 <groupId>org.openjfx</groupId>
@@ -434,14 +434,31 @@
                 <version>${javafx.version}</version>
             </dependency>
 
-            <!-- Tray-->
+            <!-- Misc-->
+            <dependency>
+                <groupId>com.beust</groupId>
+                <artifactId>klaxon</artifactId>
+                <version>${klaxon.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.natpryce</groupId>
+                <artifactId>konfig</artifactId>
+                <version>${konfig.version}</version>
+            </dependency>
+
+            <!--Tray-->
             <dependency>
                 <groupId>com.dorkbox</groupId>
                 <artifactId>SystemTray</artifactId>
                 <version>${systemtray.version}</version>
             </dependency>
 
-            <!--H2 database-->
+            <!--Database-->
+            <dependency>
+                <groupId>org.jetbrains.exposed</groupId>
+                <artifactId>exposed</artifactId>
+                <version>${exposed.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
@@ -458,6 +475,18 @@
                 <groupId>net.java.dev.jna</groupId>
                 <artifactId>jna-platform</artifactId>
                 <version>${jna.version}</version>
+            </dependency>
+
+            <!--Logging-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback-classic.version}</version>
             </dependency>
 
             <!--Testing-->
@@ -491,19 +520,6 @@
                 <version>${testfx.version}</version>
                 <scope>test</scope>
             </dependency>
-
-            <!--Logging-->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j-api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback-classic.version}</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 
@@ -521,6 +537,11 @@
             <id>jcenter-central</id>
             <name>jcenter</name>
             <url>http://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>exposed</id>
+            <name>exposed</name>
+            <url>https://dl.bintray.com/kotlin/exposed</url>
         </repository>
     </repositories>
     <pluginRepositories>
