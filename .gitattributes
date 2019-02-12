@@ -9,11 +9,22 @@
 *.html          text    diff=html
 *.fxml          text    diff=html
 *.java          text    diff=java
-*.kt            text    # diff=kotlin
-*.json          text    # diff=json
+*.kt            text
+*.json          text
 *.properties    text
 *.txt           text
 *.xml           text    diff=html
+
+*.doc   diff=astextplain
+*.DOC   diff=astextplain
+*.docx  diff=astextplain
+*.DOCX  diff=astextplain
+*.dot   diff=astextplain
+*.DOT   diff=astextplain
+*.pdf   diff=astextplain
+*.PDF   diff=astextplain
+*.rtf   diff=astextplain
+*.RTF   diff=astextplain
 
 # These files are binary and should be left untouched (binary is a macro for -text -diff)
 *.class         binary
