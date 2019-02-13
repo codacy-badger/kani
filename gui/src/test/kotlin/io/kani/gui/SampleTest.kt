@@ -1,4 +1,4 @@
-package io.kani
+package io.kani.gui
 
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test

@@ -12,7 +12,7 @@
     <version>0.1</version>
     <packaging>jar</packaging>
 
-    <name>Kani youtube-dl module</name>
+    <name>Youtube-dl module</name>
     <description>URL retriever module, utilize Youtube-dl as backend</description>
 
     <build>
@@ -20,6 +20,28 @@
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
 
         <plugins>
+            <!--Compile code and tests-->
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!--Pack sources to jar-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
