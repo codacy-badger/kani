@@ -69,6 +69,12 @@
             <artifactId>kotlin-stdlib</artifactId>
         </dependency>
 
+        <!-- JSON-->
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>klaxon</artifactId>
+        </dependency>
+
         <!--Logging-->
         <dependency>
             <groupId>org.slf4j</groupId>

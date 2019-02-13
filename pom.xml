@@ -79,7 +79,7 @@
         <logback-classic.version>1.3.0-alpha4</logback-classic.version>
 
         <!--Plugins-->
-        <maven-minimum.version>3.6.0</maven-minimum.version>
+        <maven-minimum.version>3.5.4</maven-minimum.version>
 
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
