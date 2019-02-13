@@ -70,7 +70,7 @@
 
         <jna.version>5.2.0</jna.version>
 
-        <junit-jupiter-api.version>5.4.0</junit-jupiter-api.version>
+        <junit-jupiter.version>5.4.0</junit-jupiter.version>
         <mockk.version>1.9.1</mockk.version>
         <assertj.version>3.11.1</assertj.version>
         <testfx.version>4.0.15-alpha</testfx.version>
@@ -355,8 +355,8 @@
             <!--Testing-->
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>${junit-jupiter-api.version}</version>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
