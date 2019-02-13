@@ -6,10 +6,16 @@
     <artifactId>kani</artifactId>
     <url>https://github.com/sanyarnd/kani</url>
     <version>0.1</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>Kani</name>
     <description>Youtube-dl graphical interface written in Kotlin with JavaFX</description>
+    
+    <modules>
+        <module>gui</module>
+        <!-- <module>dm</module> -->
+        <!-- <module>youtubedl</module> -->
+    </modules>
 
     <licenses>
         <license>
@@ -32,8 +38,6 @@
         <!--Project properties-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <main.class>io.kani.KaniApp</main.class>
 
         <!--Java-->
         <java-version>11</java-version>
@@ -116,37 +120,6 @@
                         <phase>test-compile</phase>
                         <goals>
                             <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!--Pack sources to jar-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <index>true</index>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>${main.class}</mainClass>
-                        </manifest>
-                    </archive>
-                    <excludes>
-                        <exclude>logback-test.xml</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-
-            <!-- Shaded package-->
-            <plugin>
-                <artifactId>maven-shade-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -285,93 +258,6 @@
         </pluginManagement>
     </build>
 
-    <dependencies>
-        <!--Kotlin STL-->
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-        </dependency>
-
-        <!--Dependency Injection-->
-        <dependency>
-            <groupId>org.kodein.di</groupId>
-            <artifactId>kodein-di-generic-jvm</artifactId>
-        </dependency>
-
-        <!--JavaFX-->
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-graphics</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-        </dependency>
-
-        <!-- Tray-->
-        <dependency>
-            <groupId>com.dorkbox</groupId>
-            <artifactId>SystemTray</artifactId>
-        </dependency>
-
-        <!--H2 database-->
-        <dependency>
-            <groupId>org.jetbrains.exposed</groupId>
-            <artifactId>exposed</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-
-        <!--JNA-->
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna-platform</artifactId>
-        </dependency>
-
-        <!--Logging-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-
-        <!--Testing-->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.mockk</groupId>
-            <artifactId>mockk</artifactId>
-            <version>${mockk.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testfx</groupId>
-            <artifactId>testfx-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testfx</groupId>
-            <artifactId>testfx-junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
     <dependencyManagement>
         <dependencies>
             <!--Kotlin STL-->
