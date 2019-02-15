@@ -1,5 +1,10 @@
 module io.kani.gui {
+    requires java.base;
+
     requires kotlin.stdlib;
+    requires kotlin.stdlib.common;
+    requires kotlin.stdlib.jdk7;
+    requires kotlin.stdlib.jdk8;
 
     requires javafx.controls;
     requires javafx.graphics;

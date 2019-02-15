@@ -18,3 +18,8 @@ data class YtdlJsonOutput(
     val title: String,
     val url: URL?
 )
+
+
+val url = URL("")
+val dl = Youtubedl(url)
+val formats = dl.fetchFormats()
