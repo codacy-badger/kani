@@ -1,8 +1,5 @@
 package io.kani.gui.lock
 
-import java.io.*
-import java.net.InetAddress
-import java.net.ServerSocket
 import java.net.URLEncoder
 import java.nio.file.Path
 import kotlin.concurrent.thread
@@ -34,7 +31,7 @@ sealed class LockResult {
  *                for all application instances which want to share the same lock id
  * @param messageHandler Optional handler for messages from other application instances
  */
-class AppLocker(private val id: String, lockDir: Path, val messageHandler: MessageHandler = {}) {
+class AppLocker(private val id: String, lockDir: Path, private val messageHandler: MessageHandler = {}) {
     /** Used to synchronize [AppLocker] between processes */
     private val globalLock = Lock(lockDir.resolve("global.lock"))
     /** File-based lock */

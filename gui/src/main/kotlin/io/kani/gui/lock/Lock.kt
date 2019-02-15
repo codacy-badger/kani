@@ -2,7 +2,10 @@ package io.kani.gui.lock
 
 import java.nio.channels.FileChannel
 import java.nio.channels.FileLock
-import java.nio.file.*
+import java.nio.file.Files
+import java.nio.file.LinkOption
+import java.nio.file.Path
+import java.nio.file.StandardOpenOption
 
 /**
  * Internal wrapper around file object for automatic management of [FileChannel] and [FileLock] objects
