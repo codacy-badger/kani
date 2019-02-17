@@ -12,7 +12,6 @@ import java.nio.file.StandardOpenOption
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
-import kotlin.concurrent.thread
 
 
 typealias MessageHandler = (message: String) -> String
@@ -59,7 +58,9 @@ class AppLocker(val id: String, lockDir: Path, private val messageHandler: Messa
     /** This extra file is used to pass server port between instances */
     private val port = lockDir.resolve(id.encoded() + ".port")
     /** Runtime hook, which automatically added with [Runtime.addShutdownHook] on [lock] and removed on [unlock] */
-    private val hook = thread(name = "AppLocker[$id]", start = false) { unlockInternal() }
+    private val hook = Thread({ unlockInternal() }, "AppLocker[$id]").apply {
+        isDaemon = true
+    }
 
     private val messageExecutor = Executors.newSingleThreadExecutor { task ->
         Thread(task).apply {
@@ -181,8 +182,7 @@ class AppLocker(val id: String, lockDir: Path, private val messageHandler: Messa
                 server.write(ByteBuffer.wrap(msg.toByteArray()))
 
                 // wait for response
-                val buffer = ByteBuffer.allocate(1024)
-                val message = readSocket(server, buffer)
+                val message = readChannel(server)
                 Response.Answer(message)
             }
         })
@@ -291,8 +291,6 @@ private class MessageServer(private val messageHandler: MessageHandler) : Runnab
     override fun run() {
         selector.use { selector ->
             channel.use { socket ->
-                val buffer = ByteBuffer.allocate(1024)
-
                 while (selector.isOpen && channel.isOpen) {
                     if (Thread.currentThread().isInterrupted) return
 
@@ -315,9 +313,7 @@ private class MessageServer(private val messageHandler: MessageHandler) : Runnab
                         // process client message
                         if (key.isReadable) {
                             (key.channel() as SocketChannel).use { client ->
-                                buffer.clear()
-
-                                val message = readSocket(client, buffer)
+                                val message = readChannel(client)
                                 val answer = messageHandler(message)
                                 client.write(ByteBuffer.wrap(answer.toByteArray()))
                             }
@@ -328,8 +324,6 @@ private class MessageServer(private val messageHandler: MessageHandler) : Runnab
             }
         }
     }
-
-
 }
 
 
@@ -339,10 +333,11 @@ private class MessageServer(private val messageHandler: MessageHandler) : Runnab
 private fun String.encoded(): String = URLEncoder.encode(this, Charsets.UTF_8)
 
 /**
- * Reads data from socket channel to string
+ * Reads data from channel to string
  */
-private fun readSocket(client: SocketChannel, buffer: ByteBuffer): String {
+private fun readChannel(client: ReadableByteChannel, bufferSize: Int = 1024): String {
     val sb = StringBuilder()
+    val buffer = ByteBuffer.allocate(bufferSize)
     while (true) {
         if (client.read(buffer) <= 0) break
 
