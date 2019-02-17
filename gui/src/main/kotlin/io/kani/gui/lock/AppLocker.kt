@@ -63,7 +63,7 @@ class AppLocker(val id: String, lockDir: Path, private val messageHandler: Messa
 
     private val messageExecutor = Executors.newSingleThreadExecutor { task ->
         Thread(task).apply {
-            "AppLocker `${this@AppLocker.id}` server thread"
+            name = "AppLocker `${this@AppLocker.id}` server thread"
             isDaemon = true
         }
     }
