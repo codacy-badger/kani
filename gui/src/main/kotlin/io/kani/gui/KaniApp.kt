@@ -1,6 +1,7 @@
 package io.kani.gui
 
 import io.kani.gui.lock.AppLocker
+import io.kani.gui.lock.Response
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
@@ -22,10 +23,6 @@ class KaniApp : Application() {
 
     override fun start(stage: Stage) {
         logger.info("Application start")
-        val l1 = AppLocker("test", Paths.get("C:/locks/sad")) { print(it) }
-        println(l1.lock())
-        val l2 = AppLocker("test", Paths.get("C:/locks")) { print(it) }
-        println(l2.lock())
 
         val mainWindow = FXMLLoader.load<VBox>(this::class.java.getResource("/fxml/MainWindow.fxml"))
         val scene = Scene(mainWindow)

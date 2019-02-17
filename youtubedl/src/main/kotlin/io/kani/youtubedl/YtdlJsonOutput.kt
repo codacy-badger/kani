@@ -20,6 +20,6 @@ data class YtdlJsonOutput(
 )
 
 
-val url = URL("")
-val dl = Youtubedl(url)
-val formats = dl.fetchFormats()
+//val url = URL("")
+//val dl = Youtubedl(url)
+//val formats = dl.fetchFormats()
