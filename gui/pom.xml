@@ -80,6 +80,12 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>io.kani</groupId>
+            <artifactId>applocker</artifactId>
+            <version>0.1</version>
+        </dependency>
+
         <!--Kotlin STL-->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>

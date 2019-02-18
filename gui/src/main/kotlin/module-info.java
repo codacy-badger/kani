@@ -13,6 +13,7 @@ module io.kani.gui {
     requires org.slf4j;
     requires com.sun.jna;
     requires com.sun.jna.platform;
+    requires io.kani.applock;
 
     opens io.kani.gui to javafx.graphics, javafx.fxml;
     opens io.kani.gui.ui to javafx.graphics, javafx.fxml;

@@ -13,6 +13,7 @@
 
     <modules>
         <module>gui</module>
+        <module>applocker</module>
         <module>youtubedl</module>
         <!-- <module>dm</module> -->
     </modules>
