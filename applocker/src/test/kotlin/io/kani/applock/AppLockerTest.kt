@@ -2,6 +2,8 @@ package io.kani.applock
 
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.condition.EnabledOnOs
+import org.junit.jupiter.api.condition.OS
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -132,8 +134,19 @@ class AppLockerTest {
     }
 
     @Test
-    fun `Inappropriate directory for lock files`() {
+    @EnabledOnOs(OS.WINDOWS)
+    fun `Inappropriate directory for lock files (Windows)`() {
         val invalidPath = Paths.get("Z:/invalid_path")
+        val l1 = AppLocker("sameId", invalidPath)
+        val r1 = l1.lock()
+
+        Assertions.assertThat(r1).isInstanceOf(LockResult.UnableCreateLock::class.java)
+    }
+
+    @Test
+    @EnabledOnOs(OS.LINUX)
+    fun `Inappropriate directory for lock files (Linux)`() {
+        val invalidPath = Paths.get("/invalid_path")
         val l1 = AppLocker("sameId", invalidPath)
         val r1 = l1.lock()
 
