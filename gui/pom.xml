@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>gui</artifactId>
-    <version>0.1</version>
+    <version>${project.parent.version}</version>
     <packaging>jar</packaging>
 
     <name>GUI module</name>
@@ -81,9 +81,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.kani</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>applocker</artifactId>
-            <version>0.1</version>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <!--Kotlin STL-->

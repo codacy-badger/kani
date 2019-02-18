@@ -94,6 +94,7 @@
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
         <maven-dependency-analyzer.version>1.11.1</maven-dependency-analyzer.version>
+        <jacoco-maven-plugin.version>0.8.3</jacoco-maven-plugin.version>
 
         <kotlin-maven-plugin.version>${kotlin.version}</kotlin-maven-plugin.version>
         <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
@@ -231,6 +232,11 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
                     <version>${versions-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
