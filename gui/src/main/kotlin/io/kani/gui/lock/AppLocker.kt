@@ -58,9 +58,7 @@ class AppLocker(val id: String, lockDir: Path, private val messageHandler: Messa
     /** This extra file is used to pass server port between instances */
     private val port = lockDir.resolve(id.encoded() + ".port")
     /** Runtime hook, which automatically added with [Runtime.addShutdownHook] on [lock] and removed on [unlock] */
-    private val hook = Thread({ unlockInternal() }, "AppLocker[$id]").apply {
-        isDaemon = true
-    }
+    private val hook = Thread({ unlockInternal() }, "AppLocker `$id` unlock hook")
 
     private val messageExecutor = Executors.newSingleThreadExecutor { task ->
         Thread(task).apply {
